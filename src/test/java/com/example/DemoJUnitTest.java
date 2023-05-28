@@ -1,8 +1,5 @@
-package com.demoqa;
+package com.example;
 
-import com.beust.ah.A;
-import com.codeborne.selenide.Configuration;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.*;
 
 public class DemoJUnitTest {
