@@ -36,7 +36,7 @@ public class AutomationPracticeFormTests {
         $("#subjectsInput").setValue("Ph").pressEnter();
         $(".custom-control-label[for='hobbies-checkbox-1']").click();
         $(".custom-control-label[for='hobbies-checkbox-2']").click();
-        $("#uploadPicture").setValue(getClass().getClassLoader().getResource("Toolsqa.jpg").getFile());
+        $("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");
         $("#currentAddress").setValue("Some address 1");
         $("#state").click();
         $("#react-select-3-option-1").click();
