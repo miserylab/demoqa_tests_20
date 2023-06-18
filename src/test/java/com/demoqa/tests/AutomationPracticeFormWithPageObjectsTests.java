@@ -1,10 +1,5 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import com.demoqa.pages.AutomationPracticePage;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
@@ -12,21 +7,19 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class AutomationPracticeFormTests extends TestBase {
-
-    AutomationPracticePage automationPracticePage = new AutomationPracticePage();
-
-
+public class AutomationPracticeFormWithPageObjectsTests extends TestBase {
 
     @Test
     void fillFormTest() {
-        automationPracticePage.openPage()
-                .setFirstName("Alex")
-                .setLastName("Egorov")
-                .setUserEmail("alex@egorov.com")
-                .setGender("Male");
+        open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
-
+        $("#firstName").setValue("Alex");
+        $("#lastName").setValue("Egorov");
+        $("#userEmail").setValue("alex@egorov.com");
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("0123456789");
 
         $("#dateOfBirthInput").click();
