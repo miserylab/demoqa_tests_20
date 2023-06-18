@@ -24,15 +24,10 @@ public class AutomationPracticeFormTests extends TestBase {
                 .setFirstName("Alex")
                 .setLastName("Egorov")
                 .setUserEmail("alex@egorov.com")
-                .setGender("Male");
+                .setGender("Male")
+                .setUserNumber("0123456789")
+                .setBirthDay("30", "July", "2008");
 
-
-        $("#userNumber").setValue("0123456789");
-
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("July");
-        $(".react-datepicker__year-select").selectOption("2003");
-        $(".react-datepicker__day--018").click();
 
         $("#subjectsInput").setValue("Chemistry").pressEnter();
         $("#subjectsInput").setValue("Physics").pressEnter();
