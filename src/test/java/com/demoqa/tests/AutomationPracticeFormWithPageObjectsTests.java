@@ -1,48 +1,45 @@
 package com.demoqa.tests;
 
+import com.demoqa.pages.AutomationPracticePage;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationPracticeFormWithPageObjectsTests extends TestBase {
 
+    AutomationPracticePage automationPracticePage = new AutomationPracticePage();
+
     @Test
     void fillFormTest() {
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-
-        $("#firstName").setValue("Alex");
-        $("#lastName").setValue("Egorov");
-        $("#userEmail").setValue("alex@egorov.com");
-        $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("0123456789");
-
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("July");
-        $(".react-datepicker__year-select").selectOption("2003");
-        $(".react-datepicker__day--018").click();
-
-        $("#subjectsInput").setValue("Chemistry").pressEnter();
-        $("#subjectsInput").setValue("Physics").pressEnter();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");
-        $("#currentAddress").setValue("Some address 1");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Merrut")).click();
-        $("#submit").click();
+        automationPracticePage.openPage()
+                .setFirstName("Alex")
+                .setLastName("Egorov")
+                .setUserEmail("alex@egorov.com")
+                .setGender("Male")
+                .setUserNumber("0123456789")
+                .setBirthDay("18", "July", "2003")
+                .setSubject("Chemistry")
+                .setSubject("Physics")
+                .setHobbies("Sports")
+                .setHobbies("Reading")
+                .setUploadPicture("Toolsqa.jpg")
+                .setAddress("Some address 1")
+                .setState("Uttar Pradesh")
+                .setCity("Merrut")
+                .clickSubmit();
 
 
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Alex"), text("Egorov"), text("alex@egorov.com"),
-                text("0123456789"));
+
+        automationPracticePage.modalDialogAppeared()
+                .verifyModalDialogTitle("Thanks for submitting the form")
+                .verifyResult("Student Name", "Alex Egorov")
+                .verifyResult("Student Email", "alex@egorov.com")
+                .verifyResult("Gender", "Male")
+                .verifyResult("Mobile", "0123456789")
+                .verifyResult("Date of Birth", "18 July,2003")
+                .verifyResult("Subjects", "Chemistry, Physics")
+                .verifyResult("Hobbies", "Sports, Reading")
+                .verifyResult("Picture", "Toolsqa.jpg")
+                .verifyResult("Address", "Some address 1")
+                .verifyResult("State and City", "Uttar Pradesh Merrut");
+
     }
 }
