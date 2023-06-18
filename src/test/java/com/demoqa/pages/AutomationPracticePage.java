@@ -1,17 +1,18 @@
 package com.demoqa.pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
+import com.demoqa.pages.components.ModalComponent;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class AutomationPracticePage {
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    ModalComponent modalComponent = new ModalComponent();
 
     //    String loginLocator = "#first_name"; // BAD PRACTICE
     SelenideElement
@@ -28,7 +29,9 @@ public class AutomationPracticePage {
             stateSelect = $("#state"),
             citySelect = $("#city"),
             stateCityWrapper = $("#stateCity-wrapper"),
-            submitButton = $("#submit");
+            submitButton = $("#submit"),
+            modalDialog = $(".modal-dialog"),
+            modalDialogTitle = $("#example-modal-sizes-title-lg");
 
     public AutomationPracticePage openPage(){
         open("/automation-practice-form");
@@ -114,6 +117,24 @@ public class AutomationPracticePage {
 
     public AutomationPracticePage clickSubmit() {
         submitButton.click();
+
+        return this;
+    }
+
+    public AutomationPracticePage modalDialogAppeared() {
+        modalDialog.should(appear);
+
+        return this;
+    }
+
+    public AutomationPracticePage verifyModalDialogTitle(String value) {
+        modalDialogTitle.shouldHave(text(value));
+
+        return this;
+    }
+
+    public AutomationPracticePage verifyResult(String label, String value) {
+        modalComponent.verifyValueByLabel(label,value);
 
         return this;
     }

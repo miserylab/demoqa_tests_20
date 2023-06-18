@@ -1,16 +1,7 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.AutomationPracticePage;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationPracticeFormTests extends TestBase {
 
@@ -26,7 +17,7 @@ public class AutomationPracticeFormTests extends TestBase {
                 .setUserEmail("alex@egorov.com")
                 .setGender("Male")
                 .setUserNumber("0123456789")
-                .setBirthDay("30", "July", "2008")
+                .setBirthDay("18", "July", "2003")
                 .setSubject("Chemistry")
                 .setSubject("Physics")
                 .setHobbies("Sports")
@@ -39,11 +30,18 @@ public class AutomationPracticeFormTests extends TestBase {
 
 
 
+        automationPracticePage.modalDialogAppeared()
+                .verifyModalDialogTitle("Thanks for submitting the form")
+                .verifyResult("Student Name", "Alex Egorov")
+                .verifyResult("Student Email", "alex@egorov.com")
+                .verifyResult("Gender", "Male")
+                .verifyResult("Mobile", "0123456789")
+                .verifyResult("Date of Birth", "18 July,2003")
+                .verifyResult("Subjects", "Chemistry, Physics")
+                .verifyResult("Hobbies", "Sports, Reading")
+                .verifyResult("Picture", "Toolsqa.jpg")
+                .verifyResult("Address", "Some address 1")
+                .verifyResult("State and City", "Uttar Pradesh Merrut");
 
-
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Alex"), text("Egorov"), text("alex@egorov.com"),
-                text("0123456789"));
     }
 }
