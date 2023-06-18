@@ -26,20 +26,19 @@ public class AutomationPracticeFormTests extends TestBase {
                 .setUserEmail("alex@egorov.com")
                 .setGender("Male")
                 .setUserNumber("0123456789")
-                .setBirthDay("30", "July", "2008");
+                .setBirthDay("30", "July", "2008")
+                .setSubject("Chemistry")
+                .setSubject("Physics")
+                .setHobbies("Sports")
+                .setHobbies("Reading")
+                .setUploadPicture("Toolsqa.jpg")
+                .setAddress("Some address 1")
+                .setState("Uttar Pradesh")
+                .setCity("Merrut")
+                .clickSubmit();
 
 
-        $("#subjectsInput").setValue("Chemistry").pressEnter();
-        $("#subjectsInput").setValue("Physics").pressEnter();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");
-        $("#currentAddress").setValue("Some address 1");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Merrut")).click();
-        $("#submit").click();
+
 
 
         $(".modal-dialog").should(appear);

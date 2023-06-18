@@ -20,7 +20,15 @@ public class AutomationPracticePage {
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
-            dateOfBirthInput = $("#dateOfBirthInput");
+            dateOfBirthInput = $("#dateOfBirthInput"),
+            subjectsInput = $("#subjectsInput"),
+            hobbiesWrapper = $("#hobbiesWrapper"),
+            uploadPicture = $("#uploadPicture"),
+            addressInput = $("#currentAddress"),
+            stateSelect = $("#state"),
+            citySelect = $("#city"),
+            stateCityWrapper = $("#stateCity-wrapper"),
+            submitButton = $("#submit");
 
     public AutomationPracticePage openPage(){
         open("/automation-practice-form");
@@ -65,4 +73,49 @@ public class AutomationPracticePage {
 
         return this;
     }
+
+    public AutomationPracticePage setSubject(String value)  {
+        subjectsInput.setValue(value).pressEnter();
+
+        return this;
+    }
+
+    public AutomationPracticePage setHobbies(String value) {
+        hobbiesWrapper.$(byText(value)).click();
+
+        return this;
+    }
+
+    public AutomationPracticePage setUploadPicture(String value) {
+        uploadPicture.uploadFromClasspath(value);
+
+        return this;
+    }
+
+    public AutomationPracticePage setAddress(String value) {
+        addressInput.setValue(value);
+
+        return this;
+    }
+
+    public AutomationPracticePage setState(String value) {
+        stateSelect.click();
+        stateCityWrapper.$(byText(value)).click();
+
+        return this;
+    }
+
+    public AutomationPracticePage setCity(String value) {
+        citySelect.click();
+        stateCityWrapper.$(byText(value)).click();
+
+        return this;
+    }
+
+    public AutomationPracticePage clickSubmit() {
+        submitButton.click();
+
+        return this;
+    }
+
 }
