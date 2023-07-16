@@ -1,6 +1,7 @@
 package com.demoqa.utils;
 
 import java.security.SecureRandom;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
@@ -11,6 +12,7 @@ public class RandomUtils {
         System.out.println(getRandomInt(111, 9999999));
         System.out.println(getRandomPhone());
         System.out.println(getRandomGender());
+        System.out.println(getRandomUuid());
     }
 
     public static String getRandomString(int len) {
@@ -47,5 +49,9 @@ public class RandomUtils {
         int index = getRandomInt(0, values.length - 1);
 
         return values[index];
+    }
+
+    private static String getRandomUuid() {
+        return UUID.randomUUID().toString();
     }
 }
