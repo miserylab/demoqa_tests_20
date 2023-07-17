@@ -31,7 +31,7 @@ public class AutomationPracticeFormTests extends TestBase {
         $("#subjectsInput").setValue("Physics").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");
+        $("#uploadPicture").uploadFromClasspath("img/Toolsqa.jpg");
         $("#currentAddress").setValue("Some address 1");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();

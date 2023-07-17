@@ -36,11 +36,15 @@ public class AutomationPracticePage {
     public AutomationPracticePage openPage(){
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-
+        RemoveBanners();
         return this;
     }
+
+    public void RemoveBanners () {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+    }
+
 
     public AutomationPracticePage setFirstName(String value) {
         firstNameInput.setValue(value);

@@ -1,11 +1,8 @@
 package com.demoqa.tests;
 
-import com.demoqa.pages.AutomationPracticePage;
 import org.junit.jupiter.api.Test;
 
 public class AutomationPracticeFormWithPageObjectsTests extends TestBase {
-
-    AutomationPracticePage automationPracticePage = new AutomationPracticePage();
 
     @Test
     void fillFormTest() {
@@ -20,7 +17,7 @@ public class AutomationPracticeFormWithPageObjectsTests extends TestBase {
                 .setSubject("Physics")
                 .setHobbies("Sports")
                 .setHobbies("Reading")
-                .setUploadPicture("Toolsqa.jpg")
+                .setUploadPicture("img/Toolsqa.jpg")
                 .setAddress("Some address 1")
                 .setState("Uttar Pradesh")
                 .setCity("Merrut")
@@ -37,7 +34,7 @@ public class AutomationPracticeFormWithPageObjectsTests extends TestBase {
                 .verifyResult("Date of Birth", "18 July,2003")
                 .verifyResult("Subjects", "Chemistry, Physics")
                 .verifyResult("Hobbies", "Sports, Reading")
-                .verifyResult("Picture", "Toolsqa.jpg")
+                .verifyResult("Picture", "img/Toolsqa.jpg")
                 .verifyResult("Address", "Some address 1")
                 .verifyResult("State and City", "Uttar Pradesh Merrut");
 
