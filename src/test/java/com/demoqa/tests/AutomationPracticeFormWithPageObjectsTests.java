@@ -34,7 +34,7 @@ public class AutomationPracticeFormWithPageObjectsTests extends TestBase {
                 .verifyResult("Date of Birth", "18 July,2003")
                 .verifyResult("Subjects", "Chemistry, Physics")
                 .verifyResult("Hobbies", "Sports, Reading")
-                .verifyResult("Picture", "img/Toolsqa.jpg")
+                .verifyResult("Picture", "Toolsqa.jpg")
                 .verifyResult("Address", "Some address 1")
                 .verifyResult("State and City", "Uttar Pradesh Merrut");
 
